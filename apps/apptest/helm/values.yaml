@@ -1,0 +1,18 @@
+workload:
+  name: apptest
+replicaCount: 1
+labels:
+  classification: public
+  environment: dev
+  team: maxence-team
+  cnp.io/logging: enabled
+  project: apptest
+service:
+  port: 8000
+  targetPort: 8000
+container:
+  port: 8000
+resources:
+  requests:
+    cpu: 500m
+    memory: 512Mi
