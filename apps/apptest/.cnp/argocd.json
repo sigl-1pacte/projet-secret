@@ -1,0 +1,8 @@
+{
+  "autoSync": true,
+  "enabled": true,
+  "prune": false,
+  "repositoryTarget": "",
+  "revision": "main",
+  "selfHeal": true
+}
