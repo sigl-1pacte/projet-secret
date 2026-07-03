@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, dev]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  apptest:
+    name: apptest
+    uses: ./.github/workflows/ci-apptest.yml
+    with:
+      app-name: apptest
+      python-version: "3.12"
