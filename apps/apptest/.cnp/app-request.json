@@ -1,0 +1,79 @@
+{
+  "argocd": {
+    "autoSync": true,
+    "enabled": true,
+    "prune": false,
+    "repositoryTarget": "",
+    "revision": "main",
+    "selfHeal": true
+  },
+  "description": "",
+  "environments": [
+    "dev"
+  ],
+  "features": {
+    "ci": true,
+    "envConfig": false,
+    "logger": true,
+    "yamlConfig": false
+  },
+  "helm": {
+    "appPort": 8000,
+    "config": {
+      "logLevel": "INFO"
+    },
+    "enabled": true,
+    "host": "",
+    "ingressEnabled": false,
+    "replicas": 1,
+    "resources": {
+      "requests": {
+        "cpu": "500m",
+        "memory": "512Mi"
+      }
+    },
+    "servicePort": 8000,
+    "tlsEnabled": false
+  },
+  "observability": {
+    "backend": "loki",
+    "collector": "alloy",
+    "grafana": {
+      "datasource": "Loki",
+      "folderName": "maxence-team-apptest",
+      "folderTitle": "maxence-team / apptest",
+      "path": "/d/cnp-maxence-team-apptest-logs/apptest-logs?orgId=1&var-team=maxence-team&var-project=apptest",
+      "provisioning": "grafana-operator",
+      "teamSubspacePath": "/teams/maxence-team/observability/logs"
+    },
+    "labelSelector": "cnp.io/logging=enabled,project=apptest,team=maxence-team",
+    "logsEnabled": true,
+    "requiredPodLabels": {
+      "cnp.io/logging": "enabled",
+      "project": "apptest",
+      "team": "maxence-team"
+    }
+  },
+  "owner": "",
+  "projectName": "apptest",
+  "repository": {
+    "githubOrg": "sigl-1pacte",
+    "private": false
+  },
+  "routing": {
+    "reason": "No sensitive data declared; AWS EKS is the public managed cluster target.",
+    "targetCluster": "aws-eks"
+  },
+  "security": {
+    "containsSensitiveData": false,
+    "dataClassification": "public",
+    "publicExposure": true,
+    "requiresSecrets": false
+  },
+  "teamName": "maxence-team",
+  "template": {
+    "appType": "python-api",
+    "framework": "fastapi",
+    "language": "python"
+  }
+}
