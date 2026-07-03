@@ -1,0 +1,54 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: apptest-logs
+  namespace: observability
+  labels:
+    project: apptest
+    team: maxence-team
+spec:
+  folderRef: maxence-team-apptest
+  instanceSelector:
+    matchLabels:
+      dashboards: grafana
+  json: |
+    {
+      "uid": "cnp-maxence-team-apptest-logs",
+      "title": "apptest logs",
+      "schemaVersion": 39,
+      "version": 1,
+      "tags": [
+        "cnp",
+        "loki",
+        "apptest",
+        "maxence-team"
+      ],
+      "timezone": "browser",
+      "time": {
+        "from": "now-1h",
+        "to": "now"
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "logs",
+          "title": "Pod logs",
+          "datasource": {
+            "type": "loki",
+            "uid": "Loki"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "{team=\"maxence-team\", project=\"apptest\"}"
+            }
+          ],
+          "gridPos": {
+            "h": 20,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    }
